@@ -1,7 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 error_reporting(ENT_IGNORE);
-//print_r($_FILES["imageFile"]);
+print_r($_FILES["imageFile"]);
 
 // create object ImageManager
 $managerImage = new \Intervention\Image\ImageManager();
@@ -30,16 +30,18 @@ if (is_file("../resources/inputImg/" . $_FILES["imageFile"]["name"])) {
         try{
             switch ($_POST["optionImage"]) {
             case "blur":
-            $image0bject->blur($_POST["grade"]);
+            $imageObject->blur($_POST["grade"]);
+            echo __LINE__;
             break;
             case "bright":
             $imageObject->brightness($_POST["grade"]);
-            $imageObject->contrast($_POST["grade"]);
             break;
             case "fit":
             $imageObject->fit($_POST["grade"]);
+            break;
             case "contrast":
             $imageObject->contrast($_POST["grade"]);
+            break;
             case "pixelate":
             $imageObject->pixelate($_POST["grade"]);
             break;
